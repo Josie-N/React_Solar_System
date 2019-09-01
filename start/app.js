@@ -71,10 +71,45 @@ const planets = [
 
 // 1: Create a 'Planet' component that renders a planet card
 
-
+const Planet = (props) => {
+  return (
+    <div class="card">
+      <div>
+        <img src="img/mercury.jpg" alt="Planet Mercury"/>
+      </div>
+      <h2>{ props.name }</h2>
+      <p>{ props.desc }</p>
+      <h3>Planet Profile</h3>
+      <ul>
+        <li><strong>{ props.diameter }</strong> 3,031.67 mi</li>
+        <li><strong>Moons:</strong> none</li>
+      </ul>
+    </div>
+  );
+}
+ 
 // 2: Create a container component that iterates over the planets array 
 //    and renders a 'Planet' component for each object in the array 
 
+const Container = (props) => {
+  return (
+    <Planet name="Josie" desc="Mercury is the closest planet to the Sun. Due to its proximity, it\'s not easily seen except during twilight. For every two orbits of the Sun, Mercury completes three rotations about its axis. Up until 1965 it was thought that the same side of Mercury constantly faced the Sun."
+            diameter="3,031.67 mi" />
+  // map function
+  );
+}
+
+const App = () => {
+  return (
+    <Container />
+  );
+}
 
 // 3: Render the container component to the DOM
 
+ReactDOM.render(
+  <App/>,
+  document.getElementById('root')  
+  // 1. The React object you'd like to render,
+  // 2. The actual HTML element you want to render it to
+);
