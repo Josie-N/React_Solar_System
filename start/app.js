@@ -73,9 +73,9 @@ const planets = [
 
 const Planet = (props) => {
   return (
-    <div class="card">
+    <div className="card">
       <div>
-        <img src="img/mercury.jpg" alt="Planet Mercury"/>
+        <img src={ props.image } alt="Planet Mercury"/>
       </div>
       <h2>{ props.name }</h2>
       <p>{ props.desc }</p>
@@ -93,22 +93,29 @@ const Planet = (props) => {
 
 const Container = (props) => {
   return (
-    <Planet name="Josie" desc="Mercury is the closest planet to the Sun. Due to its proximity, it\'s not easily seen except during twilight. For every two orbits of the Sun, Mercury completes three rotations about its axis. Up until 1965 it was thought that the same side of Mercury constantly faced the Sun."
-            diameter="3,031.67 mi" />
-  // map function
+    <div>
+      {/* Planet's List */}
+      {props.randomName.map( planet =>
+        <Planet
+          name={ planet.name } 
+          desc="Mercury is the closest planet to the Sun. Due to its proximity, it\'s not easily seen except during twilight. For every two orbits of the Sun, Mercury completes three rotations about its axis. Up until 1965 it was thought that the same side of Mercury constantly faced the Sun." 
+          diameter="3,031.67 mi" 
+        />
+      )}
+    </div>  
   );
 }
 
-const App = () => {
+const App = (props) => {
   return (
-    <Container />
+    <Container randomName={planets} />
   );
 }
 
 // 3: Render the container component to the DOM
 
 ReactDOM.render(
-  <App/>,
+  <App randomName={planets} />,
   document.getElementById('root')  
   // 1. The React object you'd like to render,
   // 2. The actual HTML element you want to render it to
