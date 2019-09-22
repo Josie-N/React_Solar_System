@@ -82,12 +82,13 @@ const Planet = (props) => {
   );
 }
 
-const Container = (props) => {
+const PlanetList = (props) => {
   return (
     <div className="container">
       {props.planets.map( planet =>
         <Planet
           {...planet}
+          image={ planet.url }
           id={ planet.id }
         />
       )}
@@ -95,14 +96,8 @@ const Container = (props) => {
   );
 }
 
-const App = (props) => {
-  return (
-    <Container planets={planets} />
-  );
-}
-
 ReactDOM.render(
-  <App planets={planets} />,
+  <PlanetList planets={planets} />,
   document.getElementById('root')  
   // 1. The React object you'd like to render,
   // 2. The actual HTML element you want to render it to
