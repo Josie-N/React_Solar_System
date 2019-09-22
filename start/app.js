@@ -6,7 +6,7 @@ const planets = [
     moons: 'none',
     desc: 'Mercury is the closest planet to the Sun. Due to its proximity, it\'s not easily seen except during twilight. For every two orbits of the Sun, Mercury completes three rotations about its axis. Up until 1965 it was thought that the same side of Mercury constantly faced the Sun.',
     url: 'img/mercury.jpg' 
-  },
+  }, //planet
   {
     id: '2',
     name: 'Venus',
@@ -14,7 +14,7 @@ const planets = [
     moons: 'none',
     desc: 'Venus is the second planet from the Sun and is the second brightest object in the night sky after the Moon. Venus is the second largest terrestrial planet and is sometimes referred to as the Earth’s sister planet due the their similar size and mass.',
     url: 'img/venus.jpg' 
-  },
+  }, //planet
   {
     id: '3',
     name: 'Earth',
@@ -22,7 +22,7 @@ const planets = [
     moons: '1',
     desc: 'Earth is the third planet from the Sun and is the largest of the terrestrial planets. The Earth is the only planet in our solar system not to be named after a Greek or Roman deity. The Earth was formed approximately 4.54 billion years ago and is the only known planet to support life.',
     url: 'img/earth.jpg' 
-  },
+  }, //planet
   {
     id: '4',
     name: 'Mars',
@@ -65,12 +65,6 @@ const planets = [
   },
 ];
 
-// =============================================================
-//   WRITE YOUR CODE BELOW
-// =============================================================
-
-// 1: Create a 'Planet' component that renders a planet card
-
 const Planet = (props) => {
   return (
     <div className="card">
@@ -87,21 +81,14 @@ const Planet = (props) => {
     </div>
   );
 }
- 
-// 2: Create a container component that iterates over the planets array 
-//    and renders a 'Planet' component for each object in the array 
 
 const Container = (props) => {
   return (
     <div className="container">
-      {/* Planet's List */}
       {props.planets.map( planet =>
         <Planet
-          image={ planet.url }
-          name={ planet.name } 
-          desc={ planet.desc }
-          diameter={ planet.diameter }
-          moons={ planet.moons }
+          {...planet}
+          id={ planet.id }
         />
       )}
     </div>  
@@ -113,8 +100,6 @@ const App = (props) => {
     <Container planets={planets} />
   );
 }
-
-// 3: Render the container component to the DOM
 
 ReactDOM.render(
   <App planets={planets} />,
